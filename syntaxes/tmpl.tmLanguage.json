@@ -1,0 +1,125 @@
+{
+    "name": "template",
+    "scopeName": "source.tmpl",
+    "patterns": [{ "include": "#expression"}],
+    "repository": {
+        "expression": {
+            "patterns":[
+                {
+                    "match": "({{)\\s*((?:\\w|_|\\.)+)(-?}})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "variable.parameter"},
+                        "3": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "({{)\\s*((?:\\w|_|\\.)+)(?:\\s+((?:\\w|_|\\.)+))?\\s*(-?}})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "entity.name.function"},
+                        "3": { "name": "variable.parameter"},
+                        "4": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "({{)(#call)\\s+((?:\\w|\\d|\\/|\\.|-|_)+)(?:\\s+(with)\\s+((?:\\w|_|\\.)+))?\\s*(-?}})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "keyword.control"},
+                        "3": { "name": "string.quoted.double"},
+                        "4": { "name": "keyword.control"},
+                        "5": { "name": "variable.parameter"},
+                        "6": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "(\\{\\{)(#extends)\\s+((?:\\w|\\d|\\/|\\.|-|_)+)\\s*(\\}\\})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "keyword.control"},
+                        "3": { "name": "entity.other.inherited-class"},
+                        "4": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "(\\{\\{)(#block)\\s+(\\w+)\\s*(-?\/?\\}\\})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "keyword.control"},
+                        "3": { "name": "entity.name.type"},
+                        "4": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "(\\{\\{)(#for)\\s+(\\w+)\\s*(?:,\\s*(\\w+))?\\s+(in)\\s+((?:\\w|_|\\.)+)\\s*(-?\\}\\})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "keyword.control"},
+                        "3": { "name": "variable.parameter"},
+                        "4": { "name": "variable.parameter"},
+                        "5": { "name": "keyword.control"},
+                        "6": { "name": "variable.parameter"},
+                        "7": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "(\\{\\{)(#)(first|last|non-first|non-last)\\s*(-?\\}\\})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "keyword.control"},
+                        "3": { "name": "keyword.control"},
+                        "4": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "(\\{\\{)(#use)\\s+((?:\\w|_|\\.)+)\\s*(-?\\}\\})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "keyword.control"},
+                        "3": { "name": "variable.parameter"},
+                        "4": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "(\\{\\{)(#override)\\s+(\\w+)\\s*(-?\\}\\})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "keyword.control"},
+                        "3": { "name": "entity.other.inherited-class"},
+                        "4": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "(\\{\\{)(#if)\\s+((?:\\w|_|\\.)+)\\s*(-?\\}\\})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "keyword.control"},
+                        "3": { "name": "variable.parameter"},
+                        "4": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "(\\{\\{)(#-?else)\\s*(-?\\}\\})",
+                    "captures": {
+                        "1": { "name": "keyword.operator"},
+                        "2": { "name": "keyword.control"},
+                        "3": { "name": "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "(\\{\\{\\/-?)(block|for|first|last|non-first|non-last|use|override|if)\\s*(\\}\\})",
+                    "captures": {
+                        "1": { "name" : "keyword.operator"},
+                        "2": { "name" : "keyword.control"},
+                        "3": { "name" : "keyword.operator"}
+                    }
+                },
+                {
+                    "match": "<!>",
+                    "name": "comment.block"
+                }
+            ]
+        }
+    }
+}

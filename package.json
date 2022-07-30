@@ -1,0 +1,25 @@
+{
+    "name": "my-tmpl-support",
+    "displayName": "my-tmpl-support",
+    "version": "0.0.3",
+    "engines": {
+        "vscode": "^1.62.0"
+    },
+    "contributes": {
+        "languages": [{
+            "id": "tmpl",
+            "aliases": ["template"],
+            "configuration": "./language-configuration.json",
+            "extensions": [
+                ".tmpl"
+            ]
+        }],
+        "grammars": [
+            {
+                "language": "tmpl",
+                "scopeName": "source.tmpl",
+                "path": "./syntaxes/tmpl.tmLanguage.json"
+            }
+        ]
+    }
+}
